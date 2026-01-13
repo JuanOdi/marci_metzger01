@@ -1,0 +1,131 @@
+/*********************************
+ Lists
+**********************************/
+@use "../modules" as m;
+.list-01 {
+    margin-top: 80px;
+    &__img-wrap {
+      position: relative;
+    }
+  
+    &__img {
+      aspect-ratio: 400/300;
+      width: 400px;
+  
+      &::before {
+        content: "";
+        background-color: m.$black;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.4;
+      }
+      @include m.mqMax (399px){
+        width: 300px;
+      
+      }
+    }
+  
+    &__img-border {
+      width: 100%;
+      max-width: 420px;
+      position: absolute;
+      z-index: -1;
+    }
+    &__ttl{
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    line-height: m.calculate_lh(24, 35);
+    }
+    &__con{
+        border-block: 1px solid m.$gray;
+        padding-block: 15px;
+    }
+    &__txt{
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: m.calculate_lh(14, 35);
+    }
+  
+    &__item {
+      @include m.flex($jc: center, $ai: center, $fw: wrap, $gap: 80px);
+
+      &-wrap {
+        max-width: 485px;
+        margin-top: -50px;
+        @include m.mqMax{
+          margin-top: unset;
+        }
+      }
+   
+
+      &:nth-child(n+2) {
+        margin-top: 85px;
+      }
+  
+      &:nth-child(odd) {
+        flex-direction: row;
+  
+        .list-01__img-border {
+          right: -25px;
+          top: -25px;
+          left: auto;
+        }
+      }
+  
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+  
+        .list-01__img-border {
+          left: -25px;
+          top: -25px;
+          right: auto; 
+        }
+      }
+      @include m.mqMax{
+        align-items: center;
+        justify-content: center;
+        gap:30px;
+      }
+    }
+}
+
+.list-02{
+  margin-top: 80px;
+  @include m.flex($jc: center, $ai: center, $gap: 40px);
+ 
+  &__item{
+    max-width: 340px;
+    width: 100%;
+    cursor: pointer;
+    &:hover{
+      .list-02__info{
+        transform: translateY(0);
+      }
+    }
+  }
+  &__wrap{
+    aspect-ratio: 1/1;
+    width: 100%;
+  }
+  &__info {
+    background-color: rgba(m.$white, 0.8);
+    padding: 20px;
+    position: absolute;
+    inset: 0;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+  }
+  &__txt{
+    // font-size: 1.8rem;
+    text-align: center;
+  }
+  &__ttl{
+    text-align: center;
+    color: m.$white;
+    font-size: 2rem;
+    margin-top: 20px;
+  }
+
+}
